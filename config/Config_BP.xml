@@ -1,0 +1,22 @@
+<config>
+  
+  <input>
+    <name>contactosAnonimos.csv</name>
+    <sep>,</sep>
+  </input>
+  
+  <columnas>
+    
+    <ID>Contact ID</ID>
+    
+    <predictorasNumericas>Number of Sessions, Number of Pageviews, Sends Since Last Engagement</predictorasNumericas>
+    <fuenteOriginal>Original Source</fuenteOriginal>
+    <dominio_mail>Email Domain</dominio_mail>
+    
+   
+    
+    <target>Lead Status</target>
+    <llamada>Resultado de la llamada</llamada>
+    
+  </columnas>
+</config>

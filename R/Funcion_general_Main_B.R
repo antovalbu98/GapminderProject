@@ -4,6 +4,8 @@ imputadorMissing <- function() {
   
   tryCatch(expr = {
   
+    
+    
     loginfo("Empezamos la app...", logger = 'log')
   
     datas <- leerData()
@@ -14,33 +16,19 @@ imputadorMissing <- function() {
      
     
     
+    
     loginfo("Empezamos la transformaccion de los datos", logger = 'log')
     
-     
-     
-     nombreArchivo <- list.files("data/Features")
-     
-     #print(length(datas))
-     
-     dfTotal <- data.frame()
-     
-     for (i in 1:length(datas)) {
-       dataFrameFiltrado <- filtrarDataFrame(datas[[i]] , nombreArchivo[i])
-       if (i == 1) {
-         dfTotal <- dataFrameFiltrado
-       }else
-       {
-         dfTotal <- merge(dfTotal, dataFrameFiltrado, by = c("country", "year"))
-       }
-       
-         
-     }
-     
-     return(dfTotal)
+     dftotal<-CreacionDataFrame(datas)
     
     loginfo("Se ha creado df completo ", logger = 'log')
     
     
+    loginfo("Empezamos la limpieza  de los datos", logger = 'log')
+    
+    dffinal<-limpar_datos(dftotal)
+    
+    loginfo("Los datos ya estan limpios ", logger = 'log')
     
     
     
