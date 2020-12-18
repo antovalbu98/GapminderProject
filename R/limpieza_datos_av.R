@@ -1,4 +1,8 @@
-# paises y anos que queremos
+# de la linea  4 a la 116 es redundante, pues eso ya lo hace la funcion
+#de lectura de datos de Borja. Mi funcion esta en la linea 117
+
+
+#---- paises y anos que queremos ----
 
 
 paises <- list('Austria', 'Belgium' , 'Bulgaria', 'Croatia', 
@@ -108,52 +112,27 @@ merge2 <-merge(x = merge1, y = life_definitivo, by = c("country", "year"))
 
 df <- merge(x = merge2, y = target_definitivo, by = c("country", "year"))
 
+###----FUNCION LIMPIEZA DE DATOS----
 
-
-
-
-
-
-###----LIMPIEZA DE DATOS----
-
-colSums(is.na(df)) # total missings por columna
-
-colSums(is.na(df))*100/nrow(df) # missings por columna
-
-#respecto a las features, hay 15 missings en fem_particip,
-# en cuanto al target, hay 12 missings
-
-# la estrategia (ideal) a seguir sera para cada missing, imputar la media de 
-# fem_particip de ese pais
-
-# df sin missings en features
-df_fem_part_no_missings <- subset(df, (!is.na(df[,3])))
-
-
-fem_part_mean_country <- aggregate(df_fem_part_no_missings$fem_particip, 
-                                   by=list(Country=df_fem_part_no_missings$country), FUN=mean)
-
-colnames(fem_part_mean_country)[2] <- "mean_fem_part"
-
-# si encuentro missings en fem_particip, le imputo la media para ese pais
-
-# si encuentro missings en fem_particip, le imputo la media para ese pais
-
-df_sin_missings <- df
-
-for (index in 1:length(df_sin_missings$country)) {
+limpar_datos <- function(dataframe){
   
-  if (is.na(df_sin_missings$fem_particip[index]) == T) {
-    df_sin_missings$fem_particip[index] <- subset(fem_part_mean_country, 
-                                                  Country==df_sin_missings[index,]['country'][[1]])['mean_fem_part'][[1]]
+  df_fem_part_no_missings <- subset(dataframe, (!is.na(dataframe[,3])))
+  
+  fem_part_mean_country <- aggregate(df_fem_part_no_missings$fem_particip, 
+                                     by=list(Country=df_fem_part_no_missings$country), FUN=mean)
+  colnames(fem_part_mean_country)[2] <- "mean_fem_part"
+  
+  df_sin_missings <- dataframe
+  
+  for (index in 1:length(df_sin_missings$country)) {
+    
+    if (is.na(df_sin_missings$fem_particip[index]) == T) {
+      df_sin_missings$fem_particip[index] <- subset(fem_part_mean_country, 
+                                                    Country==df_sin_missings[index,]['country'][[1]])['mean_fem_part'][[1]]
+    }
   }
+  
+  return(df_sin_missings)
+  
 }
-
-# comprobacion: el df sin missings no tiene missings en fem_particip
-
-colSums(is.na(df_sin_missings))
-
-# mientras que el df original mantiene los missings
-colSums(is.na(df))
-
 
