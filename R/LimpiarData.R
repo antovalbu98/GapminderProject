@@ -1,5 +1,5 @@
 
-limpar_datos <- function(dataframe){
+limpiar_datos <- function(dataframe){
   
   df_fem_part_no_missings <- subset(dataframe, (!is.na(dataframe[,3])))
   

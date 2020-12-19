@@ -5,7 +5,7 @@ leerConfig <- function(){
   library(XML)
   
   
-  configPath <- paste0("config/config_BP.xml")
+  configPath <- ("config/Config_BP.xml")
   
   
   tryCatch(expr = {
@@ -16,7 +16,7 @@ leerConfig <- function(){
     
   }, error = function(e){
     
-    logerror("Config no encontrado en su ruta. Verifica que se llame config.xml",
+    logerror("Config no  se ha encontrado en su ruta. Verifica que se llame config.xml",
              logger = 'log')
     stop()
   })

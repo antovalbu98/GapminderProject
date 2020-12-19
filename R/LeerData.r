@@ -8,16 +8,20 @@ require(dplyr)
 
 # Creo función para leer documentos que tengo en la carpeta data.
 
-leerData <- function(){
+leerData <- function(config){
    
    print('Leyendo data')
    
    
    tryCatch(expr = {
       
-      file_list <- list.files("data/Features")
+      ruta <- config$input$name
       
-      #print(file_list) 
+      #print(ruta)
+      
+      file_list <- list.files(ruta)
+      
+      print(file_list) 
       # fem_particip <- read_csv("data/Features/fem_particip.csv")
       # View(fem_particip)
       
@@ -25,10 +29,12 @@ leerData <- function(){
       
       for (i in 1:length(file_list)) {
          
-         file <- paste0("data/Features/",file_list[i])
+         file <- paste0(ruta,file_list[i])
+         
          datas[[i]] <- read.csv(file,header = TRUE, check.names = FALSE)
          
       }
+      
       
       
    }, error = function(e){
@@ -75,7 +81,7 @@ filtrarDataFrame <- function(dataFrame, nombreArchivo) {
                                                                                                  '2003', '2004', '2005', '2006', '2007'))
    
    
-   
+   nombreArchivo <- unlist(strsplit(nombreArchivo, split='.', fixed=TRUE))[1]
    
    colnames(data_filtrado) <- c("country", "year", nombreArchivo)
    
@@ -87,9 +93,11 @@ filtrarDataFrame <- function(dataFrame, nombreArchivo) {
 
 
 # Funcion para poder filtar todos los datafreme ,trasformarlo y unirlos.
-CreacionDataFrame <-function(ListaDataframe){ 
+creacionDataFrame <-function(ListaDataframe, config){ 
    
-   nombreArchivo <- list.files("data/Features")
+   ruta <- config$input$name
+   
+   nombreArchivo <- list.files(ruta)
    
    #print(length(datas))
    

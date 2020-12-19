@@ -1,11 +1,7 @@
-# VER COMO LLAMO AL DIRECTORIO O, CAMBIAR LA FORMULA PARA QUE PILLE EL DOCUMENTO 
-
-
 <config>
   
   <input>
-    <name>'data/Features'</name>
-    
+    <name>data/Features/</name>
   </input>
   
   <columnas>

@@ -7,13 +7,14 @@ imputadorMissing <- function() {
     
     loginfo("Leyendo el config...", logger = 'log')
     config <- leerConfig()
+    
     loginfo("Config leido.", logger = 'log')
     
     
     
     loginfo("Empezamos la app...", logger = 'log')
   
-    datas <- leerData()
+    datas <- leerData(config)
     
     loginfo("Se han leido los datos", logger = 'log')
     
@@ -24,14 +25,14 @@ imputadorMissing <- function() {
     
     loginfo("Empezamos la transformaccion de los datos", logger = 'log')
     
-     dftotal<-CreacionDataFrame(datas)
+     dftotal<-creacionDataFrame(datas, config)
     
     loginfo("Se ha creado df completo ", logger = 'log')
     
     
     loginfo("Empezamos la limpieza  de los datos", logger = 'log')
     
-    dffinal<-limpar_datos(dftotal)
+    dffinal<-limpiar_datos(dftotal)
     
     loginfo("Los datos ya estan limpios ", logger = 'log')
     
