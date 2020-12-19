@@ -1,17 +1,22 @@
-generarOutput <- function(output, config, path){
+# A la función que genera el output le entran como parámetros dinámicos:
+# 1. la salida de la función que genera y entrena el modelo (entrenar_modelo())
+# 2. la salida de la función que predice sobre el objetivo (predecir_objetivo())
+
+
+generarOutput <- function(modelo, prediccion, config, path){
   
   marcaTmp <- Sys.time()
   
-  nombreArchivo <- paste0(path, "output/deberesAlemania.csv")
+  nombreArchivo <- paste0(path, "output/murder_prediction.csv")
   
   tryCatch(expr = {
     
-    write.csv(output$prediccion, file = nombreArchivo, sep = config$input$sep,
+    write.csv(prediccion, file = nombreArchivo, sep = ";",
               row.names = FALSE)
     
   }, error = function(e){
     
-    logerror("Ha fallado el guardado!!", logger = 'log')
+    logerror("Ha fallado el guardado de la predicción!!", logger = 'log')
     stop()
   })
   
@@ -20,7 +25,7 @@ generarOutput <- function(output, config, path){
   
   tryCatch(expr = {
     
-    saveRDS(output$modelo, file = nombreArchivo)
+    saveRDS(modelo, file = nombreArchivo)
     
   }, error = function(e){
     
