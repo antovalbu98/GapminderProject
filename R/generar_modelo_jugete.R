@@ -5,6 +5,8 @@
 # y así me quedo con 4 columnas de datos como en nuestro caso.
 # El target es Murder
 
+library(logging)
+
 library(dplyr)
 library(data.table)
 df <- as.data.frame(state.x77)
@@ -50,7 +52,8 @@ separa_train <- function(df, pais_objetivo, year_objetivo){
 
   }, error = function(e){
     print("Error al generar train")
-    logerror("No se puede eliminar registro objetivo para crear train. Esa combinación de país y año no está disponible.",
+    #logerror
+    loginfo("No se puede eliminar registro objetivo para crear train. Esa combinación de país y año no está disponible.",
              logger = 'log')
     stop() 
     
@@ -158,7 +161,7 @@ entrenar_modelo <- function(df){
     print("entreno el modelo...")
     
     # entrenar
-    fit_modelo <- lm(Murder ~ Population + Income + Illiteracy, data=df_train)
+    fit_modelo <- lm(murdered_women ~ fem_particip + gdp + life_exp, data=df_train)
     print(summary(fit_modelo))
     
   }, error = function(e){
@@ -213,13 +216,13 @@ df_train <- separa_train(df,"Alaska",365)
 df_train
 df
 
-#df_train <- separa_train(df_train,"Alaska",365)  
+df_train <- separa_train(df_train,"Alaska",365)  
 #df_train
 
 
 df_test <- separa_test(df,"Alaska",365)
 df_test
-#df_test <- separa_test(df_test,"Alaska",365)
+df_test <- separa_test(df_test,"Alaska",365)
 
 
 
