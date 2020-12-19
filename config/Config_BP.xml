@@ -6,16 +6,9 @@
   
   <columnas>
     
-    <ID>Contact ID</ID>
+    <pais_objetivo>Spain</pais_objetivo>
+    <year_objetivo>2003</year_objetivo>
     
-    <predictorasNumericas>Number of Sessions, Number of Pageviews, Sends Since Last Engagement</predictorasNumericas>
-    <fuenteOriginal>Original Source</fuenteOriginal>
-    <dominio_mail>Email Domain</dominio_mail>
-    
-   
-    
-    <target>Lead Status</target>
-    <llamada>Resultado de la llamada</llamada>
     
   </columnas>
 </config>

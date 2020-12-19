@@ -38,22 +38,7 @@ imputadorMissing <- function() {
     
     # funciones para Generar modelo y predecir.(Script generar modelo)
     
-    
-    loginfo("Empezamos separando los datos en train", logger = 'log')
-    
-    df_train <-separa_train(dffinal,config)
-    
-    loginfo("Los datos ya estan separados ", logger = 'log')
-    
-    
-    
-    loginfo("Empezamos separando los datos de test", logger = 'log')
-    
-    df_test <-separa_test(dffinal,config)
-    
-    loginfo("Los datos ya estan separados en test ", logger = 'log')
-    
-    
+
     loginfo("Empezamos a generar el modelo ", logger = 'log')
     
     modelo <-entrenar_modelo(dffinal)
