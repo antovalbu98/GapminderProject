@@ -5,6 +5,11 @@ imputadorMissing <- function() {
   tryCatch(expr = {
   
     
+    loginfo("Leyendo el config...", logger = 'log')
+    config <- leerConfig()
+    loginfo("Config leido.", logger = 'log')
+    
+    
     
     loginfo("Empezamos la app...", logger = 'log')
   

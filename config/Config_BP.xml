@@ -1,8 +1,11 @@
+# VER COMO LLAMO AL DIRECTORIO O, CAMBIAR LA FORMULA PARA QUE PILLE EL DOCUMENTO 
+
+
 <config>
   
   <input>
-    <name>contactosAnonimos.csv</name>
-    <sep>,</sep>
+    <name>'data/Features'</name>
+    
   </input>
   
   <columnas>
