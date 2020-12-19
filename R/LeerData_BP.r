@@ -3,14 +3,15 @@ library(readr)
 library(reshape2)
 require(dplyr)
 
-leerData <- function(){
+#Probar lo de config 
+leerData <- function(config){
   
  print('Leyendo data')
 
 
  tryCatch(expr = {
       
- file_list <- list.files("data/Features")
+ file_list <- list.files( config$input$name)
  
  #print(file_list) 
  # fem_particip <- read_csv("data/Features/fem_particip.csv")
