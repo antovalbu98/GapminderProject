@@ -1,6 +1,6 @@
 library(logging)
 
-imputadorMissing2 <- function() {
+imputadorMissing <- function() {
   
   tryCatch(expr = {
   
