@@ -1,7 +1,7 @@
 
-#' Función generarOutput()
+#' @title  Función generarOutput()
 #' 
-#' Esta función empaqueta en dos ficheros diferentes los resultados de la ejecución
+#' @description  Esta función empaqueta en dos ficheros diferentes los resultados de la ejecución
 #' del programa. Por un lado, guarda en un .csv los resultados de la predicción.
 #' En un fichero rds guarda el modelo entrenado.
 #'
@@ -9,9 +9,7 @@
 #' @param prediccion 
 #'
 #' @return prediccion.csv    modelo.rds
-#' @export
-#'
-#' @examples
+
 generarOutput <- function(modelo, prediccion){
   
   marcaTmp <- Sys.time()
