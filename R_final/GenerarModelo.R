@@ -11,9 +11,6 @@
 #' @return df_train
 separa_train <- function(df, config){
   
-  print("empieza separar train...")
-  
-  
   pais_objetivo <- config$columnas$pais_objetivo
   print( pais_objetivo)
   
@@ -24,9 +21,6 @@ separa_train <- function(df, config){
     # si todo ok elimino fila objetivo y quito los registros con missings
     row_objetivo <- which((df[ ,1] == pais_objetivo) & df[ ,2] == year_objetivo)
     
-    print("row objetivo:")
-    print(row_objetivo)
-    
     # si existe la fila objetivo, saco df_train
     if ((row_objetivo +1)>=2){
       
@@ -36,21 +30,17 @@ separa_train <- function(df, config){
     
     # si no existe, paro función
     else{
-      print("No existe registro objetivo")
       loginfo("No existe registro objetivo.",
               logger = 'log')
       stop() 
     }
     
   }, error = function(e){
-    print("Error al generar train")
-
     logerror("No se puede eliminar registro objetivo para crear train. Esa combinación de país y año no está disponible.",
             logger = 'log')
     stop() 
     
   })
-  print("train separado ok")
   return(df_train)
   
 }
@@ -72,8 +62,6 @@ separa_train <- function(df, config){
 #' @return df_test
 separa_test <- function(df,config){
   
-  print("empieza separar test...")
-  
   
   pais_objetivo <- config$columnas$pais_objetivo
   year_objetivo <- config$columnas$year_objetivo
@@ -85,14 +73,12 @@ separa_test <- function(df,config){
     
     if((row_objetivo+1)>=2){
       
-      print("row objetivo:")
-      print(row_objetivo)
       
       # me quedo con registro objetivo
       df_test <- df[row_objetivo, ]
       
       if("murdered_women" %in% colnames(df)){
-        print("elimino murder")
+        
         # si hay columna target, la elimino
         df_test$Murder <- NULL
         
@@ -100,7 +86,6 @@ separa_test <- function(df,config){
       
       # si no hay columna target, hay un error
       else{
-        print("El registro objetivo no tiene target Murder")
         loginfo("El registro objetivo no tiene target Murder",logger = 'log')
         stop()
       }
@@ -108,7 +93,6 @@ separa_test <- function(df,config){
     } 
     # si no hay registro objetivo, paro
     else{
-      print("No se puede extraer el registro objetivo para predicción (test)")
       loginfo("No se puede extraer el registro para la predicción. Esa combinación de país y año no está disponible",logger = 'log')
       stop()
     }
@@ -120,7 +104,6 @@ separa_test <- function(df,config){
     stop() 
     
   })
-  print("test separado ok")
   return(df_test)
 }
 
@@ -140,7 +123,6 @@ separa_test <- function(df,config){
 #'
 #' @return fit_modelo. El modelo entrenado para df_train
 entrenar_modelo <- function(df,config){
-  print("llamo a separar train...")
   
   # separo df_train del df completo
   
@@ -151,7 +133,6 @@ entrenar_modelo <- function(df,config){
     
     # entrenar
     fit_modelo <- lm(murdered_women ~ fem_particip + gdp + life_exp, data=df_train)
-    print(summary(fit_modelo))
     
   }, error = function(e){
     
@@ -181,14 +162,12 @@ entrenar_modelo <- function(df,config){
 #' @return predictions La predicción con este modelo para el registro objetivo
 predecir_objetivo <- function(df,modelo,config){
   
-  print("llamo a separar test...")
   
   # separo el registro objetivo
 
   df_test <- separa_test(df, config)
   
   tryCatch(expr = {
-    print("empieza predecir objetivo...")
     
     # predicción
     predictions = predict.lm(modelo, df_test)
