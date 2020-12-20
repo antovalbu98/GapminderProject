@@ -48,7 +48,7 @@ imputadorMissing <- function() {
     
     loginfo("Empezamos a predecir", logger = 'log')
     
-    predicción <-predecir_objetivo(dffinal,modelo)
+    predicción <-predecir_objetivo(modelo)
     
     loginfo("Los prediccion ya esta hecha", logger = 'log')
     

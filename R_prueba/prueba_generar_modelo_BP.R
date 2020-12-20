@@ -132,7 +132,7 @@ entrenar_modelo <- function(df){
 
 
 
-predecir_objetivo <- function(df,modelo){
+predecir_objetivo <- function(df_objetivo,modelo){
   
   print("llamo a separar test...")
   
@@ -158,5 +158,3 @@ predecir_objetivo <- function(df,modelo){
   return(predictions)
   
 }
-
-
