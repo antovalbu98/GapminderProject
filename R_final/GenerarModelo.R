@@ -1,3 +1,18 @@
+#' Función separa_train()
+#' Esta función toma el df y busca el registro que combina el dato de 
+#' país y anio que se indican en el fichero config. 
+#' Se crea un nuevo df (df_train) eliminando este registro que servirá
+#' para entrenar el modelo
+#' 
+#'
+#'
+#' @param df 
+#' @param config 
+#'
+#' @return df_train
+#' @export
+#'
+#' @examples
 separa_train <- function(df, config){
   
   print("empieza separar train...")
@@ -26,15 +41,15 @@ separa_train <- function(df, config){
     # si no existe, paro función
     else{
       print("No existe registro objetivo")
-      logerror("No existe registro objetivo.",
-               logger = 'log')
+      loginfo("No existe registro objetivo.",
+              logger = 'log')
       stop() 
     }
     
   }, error = function(e){
     print("Error al generar train")
     #logerror
-    loginfo("No se puede eliminar registro objetivo para crear train. Esa combinación de país y año no está disponible.",
+    logerror("No se puede eliminar registro objetivo para crear train. Esa combinación de país y año no está disponible.",
             logger = 'log')
     stop() 
     
@@ -48,6 +63,20 @@ separa_train <- function(df, config){
 
 
 
+#' Función separa_test()
+#' 
+#' Esta función busca en el df original el registro que combina
+#' el país y anio introducidos por el usuario en el fichero de configuración.
+#' El registro se extrae y se elimina el campo de target y se guarda como 
+#' df_test. Este df se usará en la predicción del target. 
+#'
+#' @param df 
+#' @param config 
+#'
+#' @return df_test
+#' @export
+#'
+#' @examples
 separa_test <- function(df,config){
   
   print("empieza separar test...")
@@ -58,7 +87,6 @@ separa_test <- function(df,config){
     
   tryCatch(expr = {
     
-    logerror_msg <- "No se puede extraer registro para predicción"
     # compruebo que hay registro objetivo
     row_objetivo <- which((df[ ,1] == pais_objetivo) & df[ ,2] == year_objetivo)
     
@@ -80,7 +108,7 @@ separa_test <- function(df,config){
       # si no hay columna target, hay un error
       else{
         print("El registro objetivo no tiene target Murder")
-        logerror_msg <- "El registro objetivo no tiene target Murder"
+        loginfo("El registro objetivo no tiene target Murder",logger = 'log')
         stop()
       }
       
@@ -88,14 +116,14 @@ separa_test <- function(df,config){
     # si no hay registro objetivo, paro
     else{
       print("No se puede extraer el registro objetivo para predicción (test)")
-      logerror_msg <- "No se puede extraer el registro para la predicción. Esa combinación de país y año no está disponible"
+      loginfo("No se puede extraer el registro para la predicción. Esa combinación de país y año no está disponible",logger = 'log')
       stop()
     }
     
   }, error = function(e){
     
     print("Error en la extracción del registro objetivo para predicción")
-    logerror(logerror_msg,
+    logerror("Error en la extracción del registro objetivo para predicción",
              logger = 'log')
     stop() 
     
@@ -107,6 +135,20 @@ separa_test <- function(df,config){
 
 
 
+#' Función entrenar_modelo()
+#' 
+#' Esta función llama a la función "separa_train()" y sobre el df_train
+#' que devuelve calcula un modelo de regresión lineal para el target basado en los
+#' parámetros fem_particip, gdp y life_ex
+#' Devuelve como salida el modelo entrenado
+#'
+#' @param df 
+#' @param config 
+#'
+#' @return fit_modelo. El modelo entrenado para df_train
+#' @export
+#'
+#' @examples
 entrenar_modelo <- function(df,config){
   print("llamo a separar train...")
   
@@ -135,6 +177,21 @@ entrenar_modelo <- function(df,config){
 
 
 
+#' Función predecir_objetivo()
+#' 
+#' Función que predice el target para el registro objetivo 
+#' empleando el modelo entrenado en la función "entrenar_modelo()". 
+#' Para ello, la función llama inicialmene a la función 
+#' "separa_test()" para obtener el registro objetivo 
+#'
+#' @param df 
+#' @param modelo 
+#' @param config 
+#'
+#' @return predictions La predicción con este modelo para el registro objetivo
+#' @export 
+#'
+#' @examples
 predecir_objetivo <- function(df,modelo,config){
   
   print("llamo a separar test...")
