@@ -1,20 +1,22 @@
-# A la función que genera el output le entran como parámetros dinámicos:
-#
-# 1. la salida de la función que genera y entrena el modelo (entrenar_modelo())
-# 2. la salida de la función que predice sobre el objetivo (predecir_objetivo())
 
-# No  uso path, lo guarda directamente en el directorio de trabajo, carpeta output
-
-
-
-# FUNCIÓN generarOutput
-
+#' Función generarOutput()
+#' 
+#' Esta función empaqueta en dos ficheros diferentes los resultados de la ejecución
+#' del programa. Por un lado, guarda en un .csv los resultados de la predicción.
+#' En un fichero rds guarda el modelo entrenado.
+#'
+#' @param modelo 
+#' @param prediccion 
+#'
+#' @return prediccion.csv    modelo.rds
+#' @export
+#'
+#' @examples
 generarOutput <- function(modelo, prediccion){
   
   marcaTmp <- Sys.time()
   
-  #nombreArchivo <- paste0(path, "output/murder_prediction.csv")
-  nombreArchivo <- "output/prueba_prediccion.csv"
+  nombreArchivo <- "output/prediccion.csv"
   
   tryCatch(expr = {
     
@@ -27,8 +29,7 @@ generarOutput <- function(modelo, prediccion){
   })
   
   
-  #nombreArchivo <- paste0(path, "output/modelo.rds")
-  nombreArchivo <- "output/prueba_modelo.rds"
+  nombreArchivo <- "output/modelo.rds"
   
   tryCatch(expr = {
     
