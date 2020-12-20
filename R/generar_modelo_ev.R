@@ -151,7 +151,7 @@ predecir_objetivo <- function(df_objetivo,modelo){
   print("... llamo a separar test")
   
   # separo el registro objetivo
-  df_test <- separa_test(df,"Alaska",365)
+  df_test <- separa_test(df,config)
   
   
   tryCatch(expr = {
