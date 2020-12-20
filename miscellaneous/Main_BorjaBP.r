@@ -9,7 +9,7 @@
 
  # Pongo como working directory el del proyecto
 
-lapply(paste0("R/", list.files(path = "R/", recursive = TRUE)), source)
+lapply(paste0("R_prueba/", list.files(path = "R_prueba/", recursive = TRUE)), source)
 
 imputadorMissing()
 
