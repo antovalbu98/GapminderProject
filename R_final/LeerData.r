@@ -17,7 +17,7 @@ leerData <- function(config){
       
       ruta <- config$input$name
       
-      #print(ruta)
+      print(ruta)
       
       file_list <- list.files(ruta)
       
@@ -126,7 +126,7 @@ creacionDataFrame <-function(ListaDataframe, config){
 
       
 
-   
+   print('hecho')
    
    return(dfTotal)
 }

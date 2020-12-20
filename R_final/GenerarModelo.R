@@ -107,7 +107,7 @@ separa_test <- function(df,config){
 
 
 
-entrenar_modelo <- function(df){
+entrenar_modelo <- function(df,config){
   print("llamo a separar train...")
   
   # separo df_train del df completo
@@ -135,7 +135,7 @@ entrenar_modelo <- function(df){
 
 
 
-predecir_objetivo <- function(df,modelo){
+predecir_objetivo <- function(df,modelo,config){
   
   print("llamo a separar test...")
   

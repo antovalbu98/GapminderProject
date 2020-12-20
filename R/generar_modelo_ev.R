@@ -118,7 +118,7 @@ separa_test <- function(df, config){
 # El target es murdered_women
 # Las features:  gdp, life_exp, fem_particip
 
-entrenar_modelo <- function(df){
+entrenar_modelo2 <- function(df){
   print("Voy a entrenar modelo, primero...")
   print("... llamo a separar train")
   
@@ -146,7 +146,7 @@ entrenar_modelo <- function(df){
 #####---- FUNCIÓN PREDECIR OBJETIVO 
 # función predecir objetivo - llama a separa test
 
-predecir_objetivo <- function(df_objetivo,modelo){
+predecir_objetivo2 <- function(df,modelo){
   print("Voy a predecir objetivo, primero...")
   print("... llamo a separar test")
   
