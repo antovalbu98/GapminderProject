@@ -9,7 +9,7 @@
 
 # FUNCIÓN generarOutput
 
-generarOutput <- function(modelo, prediccion, config, path){
+generarOutput <- function(modelo, prediccion, config){
   
   marcaTmp <- Sys.time()
   

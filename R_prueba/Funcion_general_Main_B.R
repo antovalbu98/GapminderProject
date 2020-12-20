@@ -1,6 +1,6 @@
 library(logging)
 
-imputadorMissing <- function() {
+imputadorMissing2 <- function() {
   
   tryCatch(expr = {
   
@@ -46,11 +46,13 @@ imputadorMissing <- function() {
     loginfo("El modelo se ha generado  ", logger = 'log')
     
     
-    loginfo("Empezamos a predecir", logger = 'log')
+    #Generamso aoutput 
     
-    predicción <-predecir_objetivo(modelo)
+    loginfo("Empezamos a generar Output", logger = 'log')
     
-    loginfo("Los prediccion ya esta hecha", logger = 'log')
+    output <-generarOutput(modelo, prediccion, config)
+      
+    loginfo("Output hechos", logger = 'log')
     
     
     

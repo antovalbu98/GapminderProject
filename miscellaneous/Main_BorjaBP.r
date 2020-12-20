@@ -11,6 +11,6 @@
 
 lapply(paste0("R_prueba/", list.files(path = "R_prueba/", recursive = TRUE)), source)
 
-imputadorMissing()
+imputadorMissing2()
 
 

@@ -4,8 +4,10 @@ separa_train <- function(df, config){
   
   
   pais_objetivo <- config$columnas$pais_objetivo
-  year_objetivo <- config$columnas$year_objetivo
+  print( pais_objetivo)
   
+  year_objetivo <- config$columnas$year_objetivo
+  print(year_objetivo)
   tryCatch(expr = {
     
     # si todo ok elimino fila objetivo y quito los registros con missings
@@ -109,6 +111,7 @@ entrenar_modelo <- function(df){
   print("llamo a separar train...")
   
   # separo df_train del df completo
+  
   df_train <- separa_train(df, config)  
   
   tryCatch(expr = {
@@ -132,11 +135,12 @@ entrenar_modelo <- function(df){
 
 
 
-predecir_objetivo <- function(df_objetivo,modelo){
+predecir_objetivo <- function(df,modelo){
   
   print("llamo a separar test...")
   
   # separo el registro objetivo
+
   df_test <- separa_test(df, config)
   
   tryCatch(expr = {
