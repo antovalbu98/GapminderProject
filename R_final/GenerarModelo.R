@@ -26,14 +26,13 @@ separa_train <- function(df, config){
     # si no existe, paro función
     else{
       print("No existe registro objetivo")
-      logerror("No existe registro objetivo.",
-               logger = 'log')
+      loginfo("No existe registro objetivo.",
+              logger = 'log')
       stop() 
     }
     
   }, error = function(e){
     print("Error al generar train")
-    #logerror
     loginfo("No se puede eliminar registro objetivo para crear train. Esa combinación de país y año no está disponible.",
             logger = 'log')
     stop() 
@@ -80,7 +79,7 @@ separa_test <- function(df,config){
       # si no hay columna target, hay un error
       else{
         print("El registro objetivo no tiene target Murder")
-        logerror_msg <- "El registro objetivo no tiene target Murder"
+        loginfo("El registro objetivo no tiene target Murder",logger = 'log')
         stop()
       }
       
@@ -88,14 +87,13 @@ separa_test <- function(df,config){
     # si no hay registro objetivo, paro
     else{
       print("No se puede extraer el registro objetivo para predicción (test)")
-      logerror_msg <- "No se puede extraer el registro para la predicción. Esa combinación de país y año no está disponible"
+      loginfo("No se puede extraer el registro para la predicción. Esa combinación de país y año no está disponible",logger = 'log')
       stop()
     }
     
   }, error = function(e){
     
-    print("Error en la extracción del registro objetivo para predicción")
-    logerror(logerror_msg,
+    logerror("Error en la extracción del registro objetivo para predicción",
              logger = 'log')
     stop() 
     
@@ -103,6 +101,7 @@ separa_test <- function(df,config){
   print("test separado ok")
   return(df_test)
 }
+
 
 
 
