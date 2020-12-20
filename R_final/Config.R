@@ -13,7 +13,7 @@ leerConfig <- function(){
     #Leer el xml y convertirlo a lista
     config <- XML::xmlToList(xmlParse(configPath))
     
-    print(config)
+    #print(config)
   }, error = function(e){
     
     logerror("Config no  se ha encontrado en su ruta. Verifica que se llame config.xml",
