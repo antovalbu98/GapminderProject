@@ -45,14 +45,13 @@ separa_train <- function(df, pais_objetivo, year_objetivo){
     # si no existe, paro función
     else{
       print("No existe registro objetivo")
-      logerror("No existe registro objetivo.",
+      loginfo("No existe registro objetivo.",
                logger = 'log')
       stop() 
     }
 
   }, error = function(e){
     print("Error al generar train")
-    #logerror
     loginfo("No se puede eliminar registro objetivo para crear train. Esa combinación de país y año no está disponible.",
              logger = 'log')
     stop() 
@@ -74,7 +73,6 @@ separa_test <- function(df, pais_objetivo, year_objetivo){
   
   tryCatch(expr = {
     
-    logerror_msg <- "No se puede extraer registro para predicción"
     # compruebo que hay registro objetivo
     row_objetivo <- which((df[ ,1] == pais_objetivo) & df[ ,2] == year_objetivo)
     
@@ -96,7 +94,7 @@ separa_test <- function(df, pais_objetivo, year_objetivo){
       # si no hay columna target, hay un error
       else{
         print("El registro objetivo no tiene target Murder")
-        logerror_msg <- "El registro objetivo no tiene target Murder"
+        loginfo("El registro objetivo no tiene target Murder",logger = 'log')
         stop()
       }
       
@@ -104,14 +102,13 @@ separa_test <- function(df, pais_objetivo, year_objetivo){
     # si no hay registro objetivo, paro
     else{
       print("No se puede extraer el registro objetivo para predicción (test)")
-      logerror_msg <- "No se puede extraer el registro para la predicción. Esa combinación de país y año no está disponible"
+      loginfo("No se puede extraer el registro para la predicción. Esa combinación de país y año no está disponible",logger = 'log')
       stop()
     }
     
   }, error = function(e){
     
-    print("Error en la extracción del registro objetivo para predicción")
-    logerror(logerror_msg,
+    logerror("Error en la extracción del registro objetivo para predicción",
              logger = 'log')
     stop() 
     
@@ -160,8 +157,8 @@ entrenar_modelo <- function(df){
   tryCatch(expr = {
     print("entreno el modelo...")
     
-    # entrenar
-    fit_modelo <- lm(murdered_women ~ fem_particip + gdp + life_exp, data=df_train)
+    # entrenar      
+    fit_modelo <- lm(Murder ~ Population + Income + Illiteracy, data=df_train)
     print(summary(fit_modelo))
     
   }, error = function(e){
