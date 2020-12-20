@@ -1,18 +1,14 @@
-#' Función separa_train()
-#' Esta función toma el df y busca el registro que combina el dato de 
+#' @title  Función separa_train()
+#' @description  Esta función toma el df y busca el registro que combina el dato de 
 #' país y anio que se indican en el fichero config. 
 #' Se crea un nuevo df (df_train) eliminando este registro que servirá
 #' para entrenar el modelo
 #' 
 #'
-#'
 #' @param df 
 #' @param config 
 #'
 #' @return df_train
-#' @export
-#'
-#' @examples
 separa_train <- function(df, config){
   
   print("empieza separar train...")
@@ -63,9 +59,9 @@ separa_train <- function(df, config){
 
 
 
-#' Función separa_test()
+#' @title  Función separa_test()
 #' 
-#' Esta función busca en el df original el registro que combina
+#' @description  Esta función busca en el df original el registro que combina
 #' el país y anio introducidos por el usuario en el fichero de configuración.
 #' El registro se extrae y se elimina el campo de target y se guarda como 
 #' df_test. Este df se usará en la predicción del target. 
@@ -74,9 +70,6 @@ separa_train <- function(df, config){
 #' @param config 
 #'
 #' @return df_test
-#' @export
-#'
-#' @examples
 separa_test <- function(df,config){
   
   print("empieza separar test...")
@@ -135,9 +128,9 @@ separa_test <- function(df,config){
 
 
 
-#' Función entrenar_modelo()
+#' @title  Función entrenar_modelo()
 #' 
-#' Esta función llama a la función "separa_train()" y sobre el df_train
+#' @description  Esta función llama a la función "separa_train()" y sobre el df_train
 #' que devuelve calcula un modelo de regresión lineal para el target basado en los
 #' parámetros fem_particip, gdp y life_ex
 #' Devuelve como salida el modelo entrenado
@@ -146,10 +139,6 @@ separa_test <- function(df,config){
 #' @param config 
 #'
 #' @return fit_modelo. El modelo entrenado para df_train
-#' @export
-#'
-#' @examples
-
 entrenar_modelo <- function(df,config){
   print("llamo a separar train...")
   
@@ -178,9 +167,9 @@ entrenar_modelo <- function(df,config){
 
 
 
-#' Función predecir_objetivo()
+#' @title  Función predecir_objetivo()
 #' 
-#' Función que predice el target para el registro objetivo 
+#' @description  Función que predice el target para el registro objetivo 
 #' empleando el modelo entrenado en la función "entrenar_modelo()". 
 #' Para ello, la función llama inicialmene a la función 
 #' "separa_test()" para obtener el registro objetivo 
@@ -190,9 +179,6 @@ entrenar_modelo <- function(df,config){
 #' @param config 
 #'
 #' @return predictions La predicción con este modelo para el registro objetivo
-#' @export 
-#'
-#' @examples
 predecir_objetivo <- function(df,modelo,config){
   
   print("llamo a separar test...")
