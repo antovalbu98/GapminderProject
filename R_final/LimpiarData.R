@@ -1,3 +1,11 @@
+#' @Title limparData
+#' @Description  Funcion inicial para imputar missings de features. Para un dato missing,
+#' imputa la media para esa feature para el pais con el missing
+#' 
+#' @param dataframe 
+#'
+#' @return df_sin_missings
+#'
 
 limpiar_datos <- function(dataframe){
   

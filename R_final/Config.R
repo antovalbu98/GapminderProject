@@ -5,7 +5,7 @@ leerConfig <- function(){
   library(XML)
   
   
-  configPath <- ("config/Config_BP.xml")
+  configPath <- ("config/Config.xml")
   
   
   tryCatch(expr = {

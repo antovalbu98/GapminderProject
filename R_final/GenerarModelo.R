@@ -48,7 +48,7 @@ separa_train <- function(df, config){
     
   }, error = function(e){
     print("Error al generar train")
-    #logerror
+
     logerror("No se puede eliminar registro objetivo para crear train. Esa combinación de país y año no está disponible.",
             logger = 'log')
     stop() 
@@ -122,7 +122,6 @@ separa_test <- function(df,config){
     
   }, error = function(e){
     
-    print("Error en la extracción del registro objetivo para predicción")
     logerror("Error en la extracción del registro objetivo para predicción",
              logger = 'log')
     stop() 
@@ -131,6 +130,7 @@ separa_test <- function(df,config){
   print("test separado ok")
   return(df_test)
 }
+
 
 
 
@@ -149,6 +149,7 @@ separa_test <- function(df,config){
 #' @export
 #'
 #' @examples
+
 entrenar_modelo <- function(df,config){
   print("llamo a separar train...")
   

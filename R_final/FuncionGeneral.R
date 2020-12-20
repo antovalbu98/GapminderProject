@@ -1,5 +1,11 @@
 library(logging)
 
+#' @title ImputadorMissing
+#'
+#' @Description Funcion principal
+#' @import Logging
+#'
+#' 
 imputadorMissing <- function() {
   
   tryCatch(expr = {

@@ -8,6 +8,14 @@ require(dplyr)
 
 # Creo función para leer documentos que tengo en la carpeta data.
 
+#' @Title leerData
+#' @Description  Funcion inicial del Paquete Imputadormissing
+#' @param config 
+#'
+#'@import readr
+#' @return datas
+#'
+
 leerData <- function(config){
    
    print('Leyendo data')
@@ -21,7 +29,7 @@ leerData <- function(config){
       
       file_list <- list.files(ruta)
       
-      print(file_list) 
+      #print(file_list) 
       # fem_particip <- read_csv("data/Features/fem_particip.csv")
       # View(fem_particip)
       
@@ -93,6 +101,14 @@ filtrarDataFrame <- function(dataFrame, nombreArchivo) {
 
 
 # Funcion para poder filtar todos los datafreme ,trasformarlo y unirlos.
+#' @Title creacionDataframe
+#' @description  Devuelve dataframe ordenado tras la lectura de los documentos.
+#' @param ListaDataframe
+#' @param config 
+#'
+#' @import reshape2,dplyr
+#' @return dfTotal
+
 creacionDataFrame <-function(ListaDataframe, config){ 
    
    ruta <- config$input$name
@@ -126,7 +142,7 @@ creacionDataFrame <-function(ListaDataframe, config){
 
       
 
-   print('hecho')
+   #print('hecho')
    
    return(dfTotal)
 }
