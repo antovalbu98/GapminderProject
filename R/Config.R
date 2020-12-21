@@ -1,8 +1,12 @@
-#escribir cabeceras
 # anadir path en leerconfig como argumento de entrada
 
-
 #PRUEBA PARA VER SI SE LEE EL CONFIG, FALTARIA METER LA PARTE DE COMPROBACIÓN.
+
+#' leerConfig
+#' @description Comprueba si los datos del config cuadran
+#' @param 
+#' @return
+#' @import XML
 leerConfig <- function(){
   
   library(XML)
@@ -33,6 +37,12 @@ leerConfig <- function(){
 
 ####---- Validar config nodes ----
 
+
+#' validateConfigNodes
+#' @description Comprueba si los datos del config cuadran
+#' @param config
+#' @import XML
+#' @return
 validateConfigNodes <- function(config){
   
   nodoPrincipal <- identical(names(config), c("input", "columnas"))
