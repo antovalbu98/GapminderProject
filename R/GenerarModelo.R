@@ -49,7 +49,7 @@ separa_train <- function(df, config){
 
 
 
-#' @title  Función separa_test()
+#' @title separa_test
 #' 
 #' @description  Esta función busca en el df original el registro que combina
 #' el país y anio introducidos por el usuario en el fichero de configuración.
@@ -111,7 +111,7 @@ separa_test <- function(df,config){
 
 
 
-#' @title  Función entrenar_modelo()
+#' @title entrenar_modelo
 #' 
 #' @description  Esta función llama a la función "separa_train()" y sobre el df_train
 #' que devuelve calcula un modelo de regresión lineal para el target basado en los
@@ -148,7 +148,7 @@ entrenar_modelo <- function(df,config){
 
 
 
-#' @title  Función predecir_objetivo()
+#' @title predecir_objetivo
 #' 
 #' @description  Función que predice el target para el registro objetivo 
 #' empleando el modelo entrenado en la función "entrenar_modelo()". 
