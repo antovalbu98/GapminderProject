@@ -5,6 +5,7 @@
 #' @param config 
 #' @param path
 #' @import logging
+#' @import reshape2 
 #' @import readr
 #' @return datas
 #' 
@@ -66,7 +67,7 @@ leerData <- function(config,path){
 #' @param dataFrame 
 #' @param nombreArchivo
 #' @param dataFrame
-#' @return
+#' @return data_filtrado
 #'
 #' @examples
 filtrarDataFrame <- function(dataFrame, nombreArchivo) {
