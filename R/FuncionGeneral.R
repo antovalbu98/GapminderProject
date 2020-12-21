@@ -2,7 +2,7 @@
 #'
 #' @description Funcion principal
 #' @param path
-#' @import Logging
+#' @import logging
 #' @export
 imputadorMissing <- function(path) {
   
