@@ -1,21 +1,11 @@
-#Funciones para leer datos
-
-# Importo las librerias necesarrias.
-library(readr)
-library(reshape2)
-require(dplyr)
-
-
 # Creo función para leer documentos que tengo en la carpeta data.
 
-#' @Title leerData
-#' @Description  Funcion inicial del Paquete Imputadormissing
+#' @title leerData
+#' @description  Funcion inicial del Paquete Imputadormissing
 #' @param config 
 #'
 #'@import readr
 #' @return datas
-#'
-
 leerData <- function(config){
    
    print('Leyendo data')
@@ -65,6 +55,18 @@ leerData <- function(config){
 }
  # Funcion para filtar dataframe 
 
+
+
+#completar
+
+#' Title
+#'
+#' @param dataFrame 
+#' @param nombreArchivo 
+#'
+#' @return
+#'
+#' @examples
 filtrarDataFrame <- function(dataFrame, nombreArchivo) {
    
    paises <- list('Austria', 'Belgium' , 'Bulgaria', 'Croatia', 
@@ -101,14 +103,14 @@ filtrarDataFrame <- function(dataFrame, nombreArchivo) {
 
 
 # Funcion para poder filtar todos los datafreme ,trasformarlo y unirlos.
-#' @Title creacionDataframe
+#' @title creacionDataframe
 #' @description  Devuelve dataframe ordenado tras la lectura de los documentos.
 #' @param ListaDataframe
 #' @param config 
 #'
-#' @import reshape2,dplyr
+#' @import reshape2 
+#' @import dplyr
 #' @return dfTotal
-
 creacionDataFrame <-function(ListaDataframe, config){ 
    
    ruta <- config$input$name

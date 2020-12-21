@@ -1,4 +1,5 @@
 
+
 #' @title  Función generarOutput()
 #' 
 #' @description  Esta función empaqueta en dos ficheros diferentes los resultados de la ejecución
@@ -7,7 +8,7 @@
 #'
 #' @param modelo 
 #' @param prediccion 
-#'
+#' @import logging
 #' @return prediccion.csv    modelo.rds
 
 generarOutput <- function(modelo, prediccion){

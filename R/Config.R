@@ -1,3 +1,6 @@
+#escribir cabeceras
+# anadir path en leerconfig como argumento de entrada
+
 
 #PRUEBA PARA VER SI SE LEE EL CONFIG, FALTARIA METER LA PARTE DE COMPROBACIÓN.
 leerConfig <- function(){

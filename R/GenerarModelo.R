@@ -1,4 +1,4 @@
-#' @title  Función separa_train()
+#' @title separa_train
 #' @description  Esta función toma el df y busca el registro que combina el dato de 
 #' país y anio que se indican en el fichero config. 
 #' Se crea un nuevo df (df_train) eliminando este registro que servirá
@@ -7,7 +7,7 @@
 #'
 #' @param df 
 #' @param config 
-#'
+#' @import logging
 #' @return df_train
 separa_train <- function(df, config){
   
