@@ -1,6 +1,6 @@
 
 
-#' @title  Función generarOutput()
+#' @title generarOutput
 #' 
 #' @description  Esta función empaqueta en dos ficheros diferentes los resultados de la ejecución
 #' del programa. Por un lado, guarda en un .csv los resultados de la predicción.
@@ -9,13 +9,11 @@
 #' @param modelo 
 #' @param prediccion 
 #' @import logging
-#' @return prediccion.csv    modelo.rds
-
-generarOutput <- function(modelo, prediccion){
+generarOutput <- function(modelo, prediccion, path){
   
   marcaTmp <- Sys.time()
   
-  nombreArchivo <- "output/prediccion.csv"
+  nombreArchivo <- paste0(path, "output/prediccion.csv")
   
   tryCatch(expr = {
     
@@ -28,7 +26,7 @@ generarOutput <- function(modelo, prediccion){
   })
   
   
-  nombreArchivo <- "output/modelo.rds"
+  nombreArchivo <- paste0(path, "output/modelo.rds")
   
   tryCatch(expr = {
     
