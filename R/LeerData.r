@@ -3,17 +3,19 @@
 #' @title leerData
 #' @description  Funcion inicial del Paquete Imputadormissing
 #' @param config 
-#'
-#'@import readr
+#' @param path
+#' @import logging
+#' @import readr
 #' @return datas
-leerData <- function(config){
+#' 
+leerData <- function(config,path){
    
    print('Leyendo data')
    
    
    tryCatch(expr = {
       
-      ruta <- config$input$name
+      ruta <- paste0(path, config$input$name)
       
       #print(ruta)
       
@@ -59,11 +61,11 @@ leerData <- function(config){
 
 #completar
 
-#' Title
+#' @title filtrar df
 #'
 #' @param dataFrame 
-#' @param nombreArchivo 
-#'
+#' @param nombreArchivo
+#' @param dataFrame
 #' @return
 #'
 #' @examples
@@ -107,13 +109,14 @@ filtrarDataFrame <- function(dataFrame, nombreArchivo) {
 #' @description  Devuelve dataframe ordenado tras la lectura de los documentos.
 #' @param ListaDataframe
 #' @param config 
-#'
+#' @param path 
 #' @import reshape2 
 #' @import dplyr
+#' @import logging
 #' @return dfTotal
-creacionDataFrame <-function(ListaDataframe, config){ 
+creacionDataFrame <-function(ListaDataframe, config,path){ 
    
-   ruta <- config$input$name
+   ruta <- paste0(path,config$input$name)
    
    nombreArchivo <- list.files(ruta)
    

@@ -1,9 +1,10 @@
 #' @title ImputadorMissing
 #'
 #' @description Funcion principal
+#' @param path
 #' @import Logging
 #' @export
-imputadorMissing <- function() {
+imputadorMissing <- function(path) {
   
   tryCatch(expr = {
   
@@ -15,7 +16,7 @@ imputadorMissing <- function() {
     
     loginfo("Leyendo el config...", logger = 'log')
     
-    config <- leerConfig()
+    config <- leerConfig(path)
     
     loginfo("Config leido.", logger = 'log')
     
@@ -30,14 +31,14 @@ imputadorMissing <- function() {
     
     loginfo("Empezamos la leer los datos...", logger = 'log')
   
-    datas <- leerData(config)
+    datas <- leerData(config,path)
     
     loginfo("Se han leido los datos correctamente.", logger = 'log')
     
    
      loginfo("Empezamos la transformaccion de los datos...", logger = 'log')
     
-     dftotal <-creacionDataFrame(datas, config)
+     dftotal <-creacionDataFrame(datas, config,path)
     
     loginfo("Se ha creado dataframe correctamente.", logger = 'log')
     
@@ -73,7 +74,7 @@ imputadorMissing <- function() {
     
     loginfo("Generandose Output...", logger = 'log')
     
-    output <-generarOutput(modelo, prediccion)
+    output <-generarOutput(modelo, prediccion,path)
     
     loginfo("Output hechos.", logger = 'log')
     

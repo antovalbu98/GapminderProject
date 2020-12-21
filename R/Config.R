@@ -4,15 +4,17 @@
 
 #' leerConfig
 #' @description Comprueba si los datos del config cuadran
-#' @param 
+#' @param path
 #' @return
 #' @import XML
-leerConfig <- function(){
+#' @import logging
+#' 
+leerConfig <- function(path){
   
   library(XML)
   
   
-  configPath <- ("config/Config.xml")
+  configPath <- paste0(path,"config/Config.xml")
   
   
   tryCatch(expr = {
@@ -42,6 +44,7 @@ leerConfig <- function(){
 #' @description Comprueba si los datos del config cuadran
 #' @param config
 #' @import XML
+#' @import logging
 #' @return
 validateConfigNodes <- function(config){
   

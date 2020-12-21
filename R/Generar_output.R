@@ -8,6 +8,7 @@
 #'
 #' @param modelo 
 #' @param prediccion 
+#' @param path 
 #' @import logging
 generarOutput <- function(modelo, prediccion, path){
   
