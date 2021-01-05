@@ -1,0 +1,16 @@
+<config>
+  
+  <input>
+    <name>data/Features/</name>
+    
+    
+  </input>
+  
+  <columnas>
+    
+    <pais_objetivo>Spain</pais_objetivo>
+    <year_objetivo>2002</year_objetivo>
+    
+    
+  </columnas>
+</config>
